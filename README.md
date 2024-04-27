@@ -22,7 +22,10 @@ docker-compose.
 ### Для получения доступа с хоста по имени flask:
 `echo "127.0.0.1 flask" > /etc/hosts`
 ### Сборка проекта:
-`docker-compose build`
+```
+git clone https://github.com/MikhailSayapin/IT_Planet.git && cd IT_Planet
+docker-compose build
+```
 ### Запуск проекта:
 `docker-compose up -d`
 ### Остановка проекта:
