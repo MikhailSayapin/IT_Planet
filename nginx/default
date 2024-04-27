@@ -40,7 +40,7 @@ server {
 
 	# SSL configuration
 	#
-       listen 5000;
+       listen 5000 ssl;
 	# listen [::]:443 ssl default_server;
 	#
 	# Note: You should disable gzip for SSL traffic.
@@ -60,10 +60,10 @@ server {
 	index index.html index.htm index.nginx-debian.html;
 
 #	server_name flask;
-#        ssl_certificate /etc/nginx/ssl/nginx.crt;
-#        ssl_certificate_key /etc/nginx/ssl/nginx.key;
-#        rewrite https://flask:55555 permanent;
-#        return 301 https://flask:55555$request_uri;
+        ssl_certificate /etc/nginx/ssl/nginx.crt;
+        ssl_certificate_key /etc/nginx/ssl/nginx.key;
+#        rewrite https://flask:5000 permanent;
+#        return 301 https://127.0.0.1:5000;
 	# pass PHP scripts to FastCGI server
 	#
 	#location ~ \.php$ {

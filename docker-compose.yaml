@@ -1,22 +1,22 @@
 services:
   flask-server-1:
     build: ./flask_server_1
-    ports:
-      - "55535:55535"
-#    networks: 
-#      - "flask_net"
+#    ports:
+#      - "55535:55535"
+    networks: 
+      - flask_net
   flask-server-2:
     build: ./flask_server_2
-    ports: 
-      - "55536:55536"
-#    networks: 
-#      - "flask_net"
+#    ports: 
+#      - "55536:55536"
+    networks: 
+      - flask_net
   flask-server-3:
     build: ./flask_server_3
-    ports: 
-      - "55537:55537"
-#    networks: 
-#      - "flask_net"
+#    ports: 
+#      - "55537:55537"
+    networks: 
+      - flask_net
   ngnix-server:
     build: ./nginx
 #    volumes:
@@ -29,12 +29,15 @@ services:
     restart: always
     ports:
        - "5000:5000"
-#    networks:
-#       - "flask_net"
+    networks:
+      flask_net:
+        aliases:
+          - flask
     depends_on:
        - flask-server-1
        - flask-server-2
        - flask-server-3
-
-#networks:
-#    flask_net:
+    extra_hosts:
+      - "flask:192.168.1.6"
+networks:
+  flask_net:
